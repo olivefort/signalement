@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Signalement - Nouvelle Alerte !{% endblock %}
+
+{% block body %}
+    
+
+        {# <a href="{{ path('ingredient.index') }}" class="btn btn-primary">Liste des ingrédients</a> #}
+
+        
+
+        {{ form_start(form) }}
+        
+        <div class="grid grid-col-12">
+            <h1 class="col-span-12 place-self-center my-4 text-2xl text-white">Création d'une alerte</h1>
+
+            <div class="col-span-12 col-start-2 my-3">
+                {{ form_label(form.germe) }}      
+                {{ form_widget(form.germe) }}
+                <div class="form-error">{{ form_errors(form.germe) }}</div>
+                {{ form_help(form.germe) }}
+            </div>
+    
+            <div class="col-span-12 col-start-2 my-3">
+                {{ form_label(form.date) }}      
+                {{ form_widget(form.date) }}
+                <div class="form-error">{{ form_errors(form.date) }}</div>
+                {{ form_help(form.date) }}
+            </div>
+    
+            <div class="col-span-12 col-start-2 my-3">
+                {{ form_label(form.cloture) }}      
+                {{ form_widget(form.cloture) }}
+                <div class="form-error">{{ form_errors(form.cloture) }}</div>
+                {{ form_help(form.cloture) }}
+            </div>
+    
+            <div class="col-span-12 col-start-2 my-3">
+                {{ form_label(form.finess) }}      
+                {{ form_widget(form.finess) }}
+                <div class="form-error">{{ form_errors(form.finess) }}</div>
+                {{ form_help(form.finess) }}
+            </div>
+
+            <div class="col-span-12 col-start-2 my-3">
+                {{ form_label(form.ville) }}      
+                {{ form_widget(form.ville) }}
+                <div class="form-error">{{ form_errors(form.ville) }}</div>
+                {{ form_help(form.ville) }}
+            </div>
+    
+            <div class="col-span-12 place-self-center placehold">
+                {{ form_row(form.submit) }}      
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+        
+       
+    </div>
+
+
+{% endblock %}

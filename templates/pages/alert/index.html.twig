@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Signalement - Alerte{% endblock %}
+
+{% block body %}
+    <div class="grid grid-col-12">
+
+        <h1 class="col-span-12 place-self-center my-4 text-2xl text-white">Les Signalements</h1>
+
+        <a href="{{ path('alert.new') }}" class="col-span-12 place-self-center rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-bold uppercase leading-normal text-neutral-600">Créer une alerte</a>        
+
+        
+        
+            <div class="col-span-12 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                    <div class="overflow-hidden">
+                        <table class="min-w-full text-left text-sm font-light text-surface text-white">
+                            <thead class="border-b border-neutral-200 font-medium dark:border-white/10">
+                                <tr>
+                                <th scope="col" class="px-6 py-4">Numéro</th>
+                                <th scope="col" class="px-6 py-4">germe</th>
+                                <th scope="col" class="px-6 py-4">Date</th>
+                                <th scope="col" class="px-6 py-4">Clôturé</th>
+                                <th scope="col" class="px-6 py-4">N° Finess</th>              
+                                <th scope="col" class="px-6 py-4">Ville</th>              
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for alerte in alert %}                
+                                    <tr class="border-b border-neutral-200 dark:border-white/10">
+                                    <th class="whitespace-nowrap px-6 py-4 font-medium" scope="row">{{alerte.id}}</th>
+                                    <td class="whitespace-nowrap px-6 py-4">{{alerte.germe}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{alerte.date|date('d/m/Y')}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4">{{(alerte.cloture is same as (true)) ? 'oui' : 'non'}}</td>                    
+                                    <td class="whitespace-nowrap px-6 py-4" data-finess="{{ alerte.finess|e('html_attr') }}">{{alerte.finess}}</td>
+                                    <td class="whitespace-nowrap px-6 py-4" data-location="{{ alerte.ville|e('html_attr') }}">{{alerte.ville}}</td>
+                                    </tr>
+                                {% endfor %}             
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        
+        <div class="col-span-12 place-self-center text-white">{{ knp_pagination_render(alert)}}</div>
+
+        
+       
+    </div>
+
+    <div class="grid grid-col-12">
+        <div id="mymap" class=""></div>
+    </div>
+
+{% endblock %}

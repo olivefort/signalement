@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    background-color: rgb(44, 44, 44);
+    height: 100vh;
+}
+
+
+#mymap{
+    /* grid-column: 3/10; */
+    height: 50rem;
+    /* .leaflet-popup-close-button{
+        // display: none !important;
+        border: none !important;
+    } */
+    /* .leaflet-top{
+        display: none !important;
+    }
+    .leaflet-control a{
+        border: none !important;
+    } */
+}

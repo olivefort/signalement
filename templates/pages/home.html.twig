@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Signalements
+{% endblock %}
+
+{% block body %}
+    {# <div class="container mt-4"> #}
+        {# <div class="jumbotron"> #}
+            {# <h1 class="text-3xl font-bold underline">Espace Membre</h1> #}
+            
+            {# <hr class="my-4"> #}
+            {# <p>Pour commencer, rendez-vous sur la page d'inscription pour utiliser l'application</p> #}
+            {# {% if not app.user %} #}
+                {# <a class="btn btn-primary btn-lg" href="#" role="button">Inscription</a> #}
+                {# <a class="btn btn-primary btn-lg" href="#" role="button">Se connecter</a> #}
+            {# {% endif %} #}
+        {# </div>         #}
+    {# </div> #}
+    <div class="hero">
+        <h1 class="text-3xl italic">Signalements</h1>       
+        {% if not app.user %}
+                {# <a class="btn btn-primary btn-lg" href="#" role="button">Inscription</a> #}
+                <a class="boutonConnexion" href="/connexion" role="button">Se connecter</a>
+        {% endif %}   
+    </div>
+{% endblock %}
