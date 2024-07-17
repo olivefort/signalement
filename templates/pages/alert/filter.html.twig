@@ -1,0 +1,44 @@
+
+{{ form_start(formu, {'attr':{'class': 'mt-4 col-span-12 place-self-center flex flex-row'}}) }}
+    
+
+            <div class="flex flex-row mx-6 my-3">
+                {{ form_label(formu.field) }}      
+                {{ form_widget(formu.field) }}
+                <div class="form-error">{{ form_errors(formu.field) }}</div>
+                {{ form_help(formu.field) }}
+            </div>
+            <div class="flex flex-row mx-6 my-3">
+                {{ form_label(formu.departement) }}      
+                {{ form_widget(formu.departement) }}
+                <div class="form-error">{{ form_errors(formu.departement) }}</div>
+                {{ form_help(formu.departement) }}
+            </div>
+    
+            <div class="flex flex-row mx-6 my-3">
+                {{ form_label(formu.dateMin) }}      
+                {{ form_widget(formu.dateMin) }}
+                <div class="form-error">{{ form_errors(formu.dateMin) }}</div>
+                {{ form_help(formu.dateMin) }}
+            </div>
+            <div class="flex flex-row mx-6 my-3">
+                {{ form_label(formu.dateMax) }}      
+                {{ form_widget(formu.dateMax) }}
+                <div class="form-error">{{ form_errors(formu.dateMax) }}</div>
+                {{ form_help(formu.dateMax) }}
+            </div>
+            <div class="flex flex-row mx-6 my-3">
+                {{ form_label(formu.cloture)}}      
+                {{ form_widget(formu.cloture) }}
+                <div class="form-error">{{ form_errors(formu.cloture) }}</div>
+                {{ form_help(formu.cloture) }}
+            </div>
+            
+            <button type="submit" class="rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-bold uppercase leading-normal text-neutral-600">Filtrer</button>
+    
+
+    
+            
+
+
+{{ form_end(formu) }}

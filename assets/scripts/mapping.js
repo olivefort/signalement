@@ -42,7 +42,8 @@ function requeteCity(api){
             let nom = data[0].nom;     
             let longitude = data[0].centre.coordinates[0];
             let latitude = data[0].centre.coordinates[1];
-            coordonne(nom, longitude, latitude)
+            coordonne(nom, longitude, latitude);
+            
         }
     });
     request.send()

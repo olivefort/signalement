@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Alert;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Data\SearchData;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Alert>
@@ -16,28 +17,23 @@ class AlertRepository extends ServiceEntityRepository
         parent::__construct($registry, Alert::class);
     }
 
-    //    /**
-    //     * @return Alert[] Returns an array of Alert objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('a.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+     * recupere les alertes en lien avec la rechecrhe
+     * @return Alert
+     */
+    public function findSearch(SearchData $search) : array 
+    {
+        $query = $this
+            ->createQueryBuilder('qb');
+            // ->select('selection', 'qb')
+            // ->join('qb.germe');
 
-    //    public function findOneBySomeField($value): ?Alert
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        if (!empty($search->field)){
+            $query = $query
+                ->andWhere('qb.germe LIKE :field')
+                ->setParameter('field', "%{$search->field}%");
+        }
+        return $query->getQuery()->getResult();
+        return $this->findAll();
+    }
 }

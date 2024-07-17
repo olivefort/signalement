@@ -106,4 +106,9 @@ class Alert
         $this->Departement = $Departement;
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->Departement;
+    }
 }

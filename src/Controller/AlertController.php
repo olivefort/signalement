@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Alert;
 use App\Form\AlertType;
+use App\Data\SearchData;
+use App\Form\SearchType;
 use App\Repository\AlertRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -20,12 +22,26 @@ class AlertController extends AbstractController
         PaginatorInterface $paginator,
         Request $request
     ): Response {
-        $alert = $paginator->paginate(
-            $repository->findAll(),
-            $request->query->getInt('page',1),10
-        );
+        $data = new SearchData();
+        $form = $this->createForm(SearchType::class, $data);
+        $form->handleRequest($request);
+        $alert = $repository->findSearch($data);
+
+        //sans pagination
+        
+        $alert = $repository->findAll();
+        
+        //avec pagination
+
+        // $alert = $paginator->paginate(
+        //     $repository->findAll();
+        //     $request->query->getInt('page',1),10
+        // );
+
         return $this->render('pages/alert/index.html.twig', [
             'alert' => $alert,
+            'form' => $form->createView()
+
         ]);
     }
 
@@ -34,7 +50,7 @@ class AlertController extends AbstractController
     public function new(
         EntityManagerInterface $manager,
         Request $request,
-        Departement $Department
+        // Departement $Department
     ) :Response {
         $alert = new Alert();
         $form = $this->createForm(AlertType::class, $alert); 
@@ -42,20 +58,9 @@ class AlertController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             $alert = $form->getData();
-            // var_dump($alert);
+            var_dump($alert);
             // $alert->setUser($this->getUser());
-
-            $depRepository = $manager->getRepository(Department::class);
-            $department = $depRepository ->findOneBy(); //Chercher
-            
-
-            // $department = new Departement();
-            // var_dump($department);
-            // $number =
-            // $fitness->setNumber($number);            
-            // $department->setNumber(substr($number, 0, 2));
-            // $manager->persist($department);
-            // $manager->save();
+            $alert->setDepartement(substr($alert->getFiness(), 0, 2));     
 
             $manager->persist($alert);
             $manager->flush();

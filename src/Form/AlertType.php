@@ -22,15 +22,15 @@ class AlertType extends AbstractType
                 'attr' => [
                     'placeholder' => "germe",
                     'class' => 'rounded placeholder-black !important',
-                    // 'minlength' => '2',
-                    // 'maxlength' => '50',
+                    'minlength' => '2',
+                    'maxlength' => '50',
                 ],
                 'label' => 'Nom du germe :',
                 'label_attr' => [
                     'class' => 'text-white'
                 ],
                 'constraints' => [
-                    // new Assert\Length(['min'=>2,'max'=>50]),
+                    new Assert\Length(['min'=>2,'max'=>50]),
                     new Assert\NotBlank()                    
                 ]
             ])
@@ -71,15 +71,15 @@ class AlertType extends AbstractType
                 'attr' => [
                     'placeholder' => "nom de la ville",
                     'class' => 'rounded placeholder-black',
-                    // 'minlength' => '2',
-                    // 'maxlength' => '50',
+                    'minlength' => '2',
+                    'maxlength' => '50',
                 ],
                 'label' => 'Ville :',
                 'label_attr' => [
                     'class' => 'text-white'
                 ],
                 'constraints' => [
-                    // new Assert\Length(['min'=>2,'max'=>50]),
+                    new Assert\Length(['min'=>2,'max'=>50]),
                     new Assert\NotBlank()                    
                 ]
             ])

@@ -10,7 +10,11 @@
         <a href="{{ path('alert.new') }}" class="col-span-12 place-self-center rounded bg-neutral-100 px-6 pb-2 pt-2.5 text-xs font-bold uppercase leading-normal text-neutral-600">Créer une alerte</a>        
 
         
-        
+        <div class="grid grid-col-12 col-span-12">
+            {% include 'pages/alert/filter.html.twig' with {formu: form} only %}            
+        </div>
+
+
             <div class="col-span-12 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
@@ -41,8 +45,8 @@
                     </div>
                 </div>
             </div>
-        
-        <div class="col-span-12 place-self-center text-white">{{ knp_pagination_render(alert)}}</div>
+            
+            {# <div class="col-span-12 place-self-center text-white">{{ knp_pagination_render(alert)}}</div> #}
 
         
        

@@ -3,6 +3,8 @@
 
 namespace App\Data;
 
+use App\Entity\Alert;
+
 class SearchData
 {
  /**
@@ -26,7 +28,7 @@ class SearchData
   public $cloture = false;
   
   /**
-   * @var Departement[]
+   * @var Alert[]
    */
   public $departement = [];
 
